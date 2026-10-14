@@ -1,0 +1,32 @@
+Google Cloud AI & Machine Learning Services
+
+Vertex AI is Google Cloud's unified AI platform that enables data scientists and ML engineers to build, deploy, and scale ML models faster. It brings together Google Cloud services for building ML under one unified UI and API.
+
+Gemini is Google's most capable and general AI model family. Available through Vertex AI, Gemini comes in several variants:
+- Gemini Ultra: Most capable model for highly complex tasks
+- Gemini Pro / Gemini 2.0 Pro: Mid-range model balancing capability and speed
+- Gemini Flash / Gemini 2.0 Flash: Fast, efficient model for high-frequency tasks
+- Gemini Nano: Lightweight model for on-device tasks
+
+Vertex AI Model Garden provides access to first-party Google models, open-source models, and third-party models. Developers can explore, test, and deploy models directly from the Model Garden.
+
+Google Cloud Storage (GCS) is an object storage service for storing unstructured data. In ML workflows, GCS is commonly used to store training datasets, model artifacts, and inference results.
+
+BigQuery is Google Cloud's serverless, highly scalable, and cost-effective multi-cloud data warehouse. It supports ML directly through BigQuery ML (BQML), allowing users to build and run ML models using standard SQL.
+
+Cloud Run is a managed compute platform that enables you to run stateless containers. It is ideal for deploying ML inference services, microservices, and API endpoints built with frameworks like FastAPI or Flask.
+
+Vertex AI Agent Builder (formerly Dialogflow CX / Gen App Builder) enables developers to build and deploy AI-powered agents and applications. It integrates with Vertex AI models and provides grounding capabilities.
+
+Vertex AI Feature Store provides a centralized repository for storing, serving, and sharing ML features. It enables feature reuse across teams and ensures consistency between training and serving environments.
+
+Vertex AI Vector Search (formerly Matching Engine) provides a managed similarity search service for high-dimensional vectors. It enables scalable nearest-neighbor search for recommendation systems, semantic search, and RAG pipelines.
+
+Text Embeddings API on Vertex AI provides access to Google's text embedding models, including text-embedding-004 and text-multilingual-embedding-002. These models convert text into high-dimensional numerical vectors for semantic similarity tasks.
+
+The Google Agent Development Kit (ADK) is Google's open-source Python framework for building autonomous, multi-step AI agents. ADK integrates natively with Vertex AI, Gemini models, and Google tools. Key features:
+- Declarative agent definition with tools and sub-agents
+- Built-in session management and memory
+- Native MCP (Model Context Protocol) support
+- Support for streaming responses
+- Integration with Google Search, code execution, and other Google tools

@@ -1,0 +1,48 @@
+Agentic AI Systems: Architecture and Design Patterns
+
+Agentic AI systems are autonomous AI systems that can plan, execute multi-step tasks, use tools, and adapt their behavior based on feedback. Unlike simple query-response models, agents operate in a loop: perceive the environment, plan actions, execute them, and evaluate results.
+
+The Plan-Execute-Critique-Refine (PECR) loop is a core architecture pattern for autonomous agents:
+1. Plan: The agent analyzes the goal and breaks it down into sub-tasks
+2. Execute: The agent performs each sub-task using available tools
+3. Critique: The agent evaluates its own output for completeness and accuracy
+4. Refine: If gaps are found, the agent generates follow-up queries and iterates
+
+Agent Development Kit (ADK) is Google's framework for building multi-agent systems. ADK provides:
+- LlmAgent: A reasoning agent powered by a language model
+- SequentialAgent: Executes sub-agents in sequence
+- ParallelAgent: Executes sub-agents concurrently
+- LoopAgent: Repeatedly executes a sub-agent until a termination condition is met
+- Tools: Function tools that extend agent capabilities
+
+Tools are the primary way agents interact with external systems. Common tool types include:
+- Search tools: Query vector databases or the web
+- API tools: Interact with external services
+- Code execution tools: Run scripts and return results
+- File tools: Read and write files
+
+Model Context Protocol (MCP) is an open standard for connecting AI models to external data sources and tools. An MCP server exposes resources (data) and tools (actions) that AI clients can discover and use. The Anthropic fetch MCP server can retrieve and process web content through a standardized interface.
+
+Multi-agent architectures involve multiple specialized agents collaborating to solve complex tasks. Patterns include:
+- Orchestrator-Subagent: A central agent delegates to specialized sub-agents
+- Peer-to-Peer (A2A): Agents communicate directly using the A2A protocol
+- Pipeline: Agents process data sequentially, each adding value
+- Debate: Multiple agents generate competing solutions for a judge to evaluate
+
+Self-critique in AI agents enables autonomous quality improvement. The critic reviews the agent's output, identifies gaps and inconsistencies, and generates actionable follow-up questions. Key aspects of effective critique prompts:
+1. Completeness check: Does the answer fully address the original question?
+2. Accuracy check: Are there factual claims that need verification?
+3. Gap identification: What important aspects were not covered?
+4. Follow-up generation: What additional research would improve the answer?
+
+Memory systems in agents enable continuity across interactions:
+- In-context memory: Information stored in the active context window
+- External memory: Information stored in databases (vector stores, SQL, key-value)
+- Episodic memory: Records of past interactions and their outcomes
+- Semantic memory: Distilled knowledge and facts about the world
+
+Tool orchestration refers to how agents decide which tools to use for different tasks. The planner must:
+- Classify the query type (factual, analytical, current events, financial data, etc.)
+- Select appropriate tools for each sub-task
+- Sequence tool calls to maximize information quality
+- Handle tool failures and fallbacks gracefully

@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  # Anthropic MCP fetch server (Phase 3 — Financial Data Tool)
+  mcp-fetch:
+    image: mcp/fetch
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  # Autonomous Research Agent (Streamlit UI)
+  research-agent:
+    build: .
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    environment:
+      - MCP_FETCH_URL=http://mcp-fetch:8000
+    volumes:
+      # Mount GCP credentials for Vertex AI authentication
+      - ${GOOGLE_APPLICATION_CREDENTIALS:-~/.config/gcloud/application_default_credentials.json}:/app/credentials.json:ro
+      - ./faiss_index:/app/faiss_index
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/credentials.json
+      - MCP_FETCH_URL=http://mcp-fetch:8000
+    depends_on:
+      - mcp-fetch
+    restart: unless-stopped

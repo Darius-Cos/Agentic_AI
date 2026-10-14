@@ -1,0 +1,57 @@
+Retrieval-Augmented Generation (RAG): Architecture and Best Practices
+
+RAG (Retrieval-Augmented Generation) is a technique that enhances LLM responses by retrieving relevant context from a knowledge base before generating an answer. This grounds the model's output in factual, up-to-date information from your specific domain.
+
+Core RAG Pipeline:
+1. Document Ingestion: Load documents from various sources (PDFs, web pages, databases)
+2. Chunking: Split documents into smaller, semantically meaningful chunks
+3. Embedding: Convert chunks into dense vector representations
+4. Indexing: Store vectors in a vector database (FAISS, Pinecone, Weaviate, Chroma)
+5. Query Processing: Convert user queries to vectors
+6. Retrieval: Find the top-k most similar chunks using vector similarity search
+7. Augmentation: Add retrieved chunks to the LLM prompt as context
+8. Generation: LLM generates a response grounded in the retrieved context
+
+Chunking Strategies:
+- Fixed-size chunking: Split text into chunks of N tokens/characters with overlap
+- Semantic chunking: Split at natural boundaries (paragraphs, sections)
+- Recursive chunking: Split hierarchically by document structure
+- Sentence-level chunking: Each sentence or sentence group is a chunk
+- Document-level chunking: Treat entire documents as single chunks (for short docs)
+
+Embedding Models:
+- Google text-embedding-004: 768-dimensional embeddings, strong multilingual support
+- text-embedding-gecko: Google's earlier embedding model
+- OpenAI text-embedding-3-large: 3072-dimensional, high quality
+- Sentence-BERT / all-mpnet-base-v2: Open-source, good quality
+- E5-large-v2: Strong performance on retrieval benchmarks
+
+Vector Similarity Metrics:
+- Cosine similarity: Measures the angle between vectors, normalized for magnitude
+- Dot product: Fast but magnitude-sensitive
+- Euclidean distance (L2): Good for dense, normalized vectors
+- Inner product: Used by FAISS IVF indexes for fast approximate search
+
+FAISS Index Types:
+- IndexFlatL2 / IndexFlatIP: Exact search, best accuracy, O(n) time
+- IndexIVFFlat: Inverted file index, approximate search, much faster for large datasets
+- IndexIVFPQ: Product quantization, reduces memory footprint
+- IndexHNSW: Hierarchical Navigable Small World, very fast approximate search
+
+Advanced RAG Techniques:
+- Hybrid Search: Combine dense vector search with sparse BM25 keyword search
+- Re-ranking: Use a cross-encoder to re-rank top-k results by relevance
+- Query Expansion: Generate multiple query variations to improve recall
+- Hypothetical Document Embeddings (HyDE): Generate a hypothetical answer, then embed it for retrieval
+- Contextual Compression: Compress retrieved chunks to only the relevant parts
+- Multi-vector Retrieval: Store both summary and detail embeddings per document
+
+Evaluation Metrics for RAG:
+- Retrieval metrics: Recall@k, Precision@k, MRR (Mean Reciprocal Rank), NDCG
+- Generation metrics: Faithfulness (is the answer grounded?), Answer Relevance, Context Precision
+- End-to-end: RAGAS framework, TruLens, DeepEval
+
+RAG vs Fine-tuning:
+- Use RAG when: Knowledge changes frequently, need to cite sources, domain data is large
+- Use Fine-tuning when: Want to change model behavior/style, task-specific patterns, latency constraints
+- Use both when: Maximum performance on specific domains with behavioral customization

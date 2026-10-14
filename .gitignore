@@ -1,0 +1,49 @@
+# Environment
+.env
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+venv/
+.venv/
+env/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# FAISS index (rebuild with: python main.py --build-index)
+faiss_index/
+
+# GCP credentials
+credentials.json
+application_default_credentials.json
+service_account*.json
+
+# Documentation generator & output
+generate_doc.py
+Documentatie_Proiect.docx
+
+# Streamlit
+.streamlit/
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.iml
+*.pyc
+.ipynb_checkpoints/
+node_modules/
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+Thumbs.db
